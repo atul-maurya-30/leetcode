@@ -6,6 +6,8 @@
 
 class Solution:
     def hasCycle(self, head) -> bool:
+        #we use floyd's cylcle-finding algortihm, also known as the Tortoise and hare alo
+#it uses two pointers,moving at different speeds,to traverse the sequence
         slow=fast=head
         while fast and fast.next:
             slow=slow.next

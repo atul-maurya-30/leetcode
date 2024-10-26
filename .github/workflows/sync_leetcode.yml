@@ -1,0 +1,26 @@
+name: Sync LeetCode Solutions
+
+on:
+  schedule:
+    - cron: '0 * * * *'  # Runs every hour (you can adjust this)
+
+jobs:
+  sync:
+    runs-on: ubuntu-latest
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v2
+
+    - name: Set up Python
+      uses: actions/setup-python@v2
+      with:
+        python-version: '3.8'
+
+    - name: Install dependencies
+      run: |
+        pip install requests PyGithub
+
+    - name: Run sync script
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}  # Use the token from GitHub secrets
+      run: python sync_leetcode.py  # Make sure this matches your script name

@@ -18,8 +18,6 @@ class Solution(object):
             else:
                 temp.next,list1=list1,list1.next
             temp=temp.next
-        if list1:
-            temp.next=list1
-        else:
-            temp.next=list2
+        temp.next=list1 or list2
+        temp=None
         return merge.next

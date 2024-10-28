@@ -13,6 +13,6 @@ class Solution(object):
         new=[1]*numRows
 
         for i in range(1,numRows-1):
-            new[i]=prev[-1][i-1]+prev[-1][i]
+            new[i]=prev[-1][i-1]+prev[-1][i]  # in this -1 indicates the last row and other are showing the columns
         prev.append(new)
         return prev

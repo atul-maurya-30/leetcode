@@ -4,7 +4,6 @@ class Solution(object):
         :type nums: List[int]
         :rtype: List[int]
         """
-        m=nums
-        nums.extend(m)
+        nums.extend(nums)
         return nums
         

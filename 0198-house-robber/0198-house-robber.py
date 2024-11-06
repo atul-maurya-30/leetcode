@@ -10,7 +10,7 @@ class Solution(object):
             return nums[0]
         prev_n=0
         prev_r=nums[0]
-        for i in range(0,len(nums)):
+        for i in range(1,len(nums)):
             s=max(prev_r,prev_n+nums[i])
             prev_n=prev_r
             prev_r=s

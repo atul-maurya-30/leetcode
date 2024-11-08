@@ -6,8 +6,8 @@ class Solution(object):
         :rtype: List[int]
         """
         # Xor all the elements to get the cumulative XOR
-            # xXor0=0 (different)
-            # xXorx=x (same)
+            # y Xor 0= y (different)
+            # y Xor y= 0 (same)
 
         # totalXor=0
         # for i in nums:
@@ -36,12 +36,28 @@ class Solution(object):
         # return r
 
         #third way
-        maxK=(1<<maximumBit)-1
+        # maxK=(1<<maximumBit)-1
+        # n=len(nums)
+        # r=[0]*n
+        # c=0
+
+        # for i in range(n):
+        #     c^=nums[i]
+        #     r[n-i-1]=~c&maxK
+        # return r
+
+
+        #fourth way
         n=len(nums)
-        r=[0]*n
-        c=0
+        r=[]
+        x=0
+        for i in range(n):
+            x^=nums[i]
+
+        maxk=((1<<maximumBit)-1) #it works as 2^n-1
 
         for i in range(n):
-            c^=nums[i]
-            r[n-i-1]=~c&maxK
+            k=x^maxk #this will give the flipped value of Xor i.e. for best k
+            r.append(k)
+            x=(x^nums[n-1-i])
         return r

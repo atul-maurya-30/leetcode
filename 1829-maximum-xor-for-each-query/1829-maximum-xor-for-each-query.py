@@ -17,12 +17,16 @@ class Solution(object):
 
         # Calculate the result for each query
         r=[]
-        for _ in range(len(nums)):
+        # for _ in range(len(nums)):
 
-            #k is given as this first query
-            k=totalXor^maxK
-            r.append(k)
+        #     #k is given as this first query
+        #     k=totalXor^maxK
+        #     r.append(k)
 
-            # totalXor is as second query for removing the element
+        #     # totalXor is as second query for removing the element
+        #     totalXor^=nums.pop()
+
+        for i in reversed(nums):
+            r.append(totalXor^maxK)
             totalXor^=nums.pop()
         return r

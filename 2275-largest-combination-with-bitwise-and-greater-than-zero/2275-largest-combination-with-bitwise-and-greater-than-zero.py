@@ -6,7 +6,7 @@ class Solution(object):
         """
         m=0  #store maximum count of 1 in any bit position
         b=0  #it is a counter go from 0 to 23
-        while b<24:
+        while b<23:
             b_bit=0 # counts that how many 1 in the b-th positon
             for a in candidates: #now for checking the elements in the candidates
 

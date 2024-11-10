@@ -18,11 +18,15 @@ class Solution:
         #vec[i]=total no. of setbits in the ith position
 
         #now we have to follow sliding window technique
-        while j<n:
+        
+        while j<n: #this loop is used for expanding the subarray
             self.updatevec(nums[j],vec,1) #add current number to the vector
-            while i<=j and self.getDecimal(vec)>=k:
+
+            while i<=j and self.getDecimal(vec)>=k:  #this loop is used for shrinking the subarray
                 r=min(r,j-i+1) #update the minimum length
                 self.updatevec(nums[i],vec,-1) #remove the leftmost number
                 i+=1 #shrink the window from the left
             j+=1 #shrink the window from right
         return r if r!=float('inf') else -1 #return the result or -1 if no subarray found
+
+        #time complexity of this code is O(n)

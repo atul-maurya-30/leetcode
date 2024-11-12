@@ -11,5 +11,5 @@ class Solution:
         #         c=d[n]
         # return m
 
-        t=max(set(nums),key=lambda x:nums.count(x))
-        return t
+        return max(set(nums),key=lambda x:nums.count(x))
+        

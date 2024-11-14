@@ -23,7 +23,7 @@ class Solution:
             if self.poss(mid,quantities,n):
                 l=mid+1
 
-            #if not then decrease the upper bound
+            #if not then just give the mid value to upper bound
             else:
                 r=mid
 

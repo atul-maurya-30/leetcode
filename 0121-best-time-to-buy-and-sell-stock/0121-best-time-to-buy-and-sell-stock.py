@@ -4,7 +4,9 @@ class Solution:
         max_p=0
 
         for price in prices:
-            min_p=min(min_p,price)
-            profit=price-min_p
-            max_p=max(max_p,profit)
+            if price<min_p:
+                min_p=price
+            pro=price-min_p
+            if pro>max_p:
+                max_p=pro
         return max_p

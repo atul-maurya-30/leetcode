@@ -4,13 +4,11 @@ class Solution:
 
         #phase-1 find the jth pointer from the right side
         r=n-1
-        if arr==sorted(arr):
-            return 0
         while r>0 and arr[r]>=arr[r-1]:
             r-=1
         
         l=0
-        res=n
+        res=r #we remove all elements left to index r because index r to n-1 are sorted
 
         #phase-2 start finding correct left and right pointers and find delted elements=r-l-1
 

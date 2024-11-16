@@ -1,7 +1,6 @@
 class Solution:
     def resultsArray(self, nums: List[int], k: int) -> List[int]:
         n=len(nums)
-        nums.append(0)
         m=[]
         l=0
         r=k

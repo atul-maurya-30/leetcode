@@ -7,8 +7,7 @@ class Solution:
         while r<n+1:
             j=nums[l:r]
             if j==sorted(j) and all(j[i]+1==j[i+1] for i in range(len(j)-1)):
-                a=max(j)
-                m.append(a)
+                m.append(max(j))
             else:
                 m.append(-1)
             l+=1

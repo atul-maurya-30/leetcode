@@ -1,14 +1,14 @@
 class Solution:
     def updatevec(self,number,vec,val):
         for i in range(0,32):
-            if (number>>i)&1: #check the ith bit
+            if (number>>i)&1: #check the ith bit using right shift
                 vec[i]+=val  #update the count of set bits at the ith position
 
     def getDecimal(self,vec):
         m=0
         for i in range(0,32):
             if vec[i]>0:  #if there's any set bit in this position
-                m|=(1<<i)  #set the ith bit in the result
+                m|=(1<<i)  #set the ith bit in the result using left shift
         return m
     def minimumSubarrayLength(self, nums: List[int], k: int) -> int:
         n=len(nums)
@@ -18,7 +18,7 @@ class Solution:
         #vec[i]=total no. of setbits in the ith position
 
         #now we have to follow sliding window technique
-        
+
         while j<n: #this loop is used for expanding the subarray
             self.updatevec(nums[j],vec,1) #add current number to the vector
 

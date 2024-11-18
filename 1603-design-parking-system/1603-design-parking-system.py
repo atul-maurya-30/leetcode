@@ -2,7 +2,7 @@ class ParkingSystem:
 
     def __init__(self, big: int, medium: int, small: int):
         #we use below codes for making copies of the class(also called as object)
-        self.parking={1:big,2:medium,3:small}
+        self.parking=[0,big,medium,small]
         
 
     def addCar(self, carType: int) -> bool:

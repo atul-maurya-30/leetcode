@@ -1,6 +1,7 @@
 class Solution:
     def takeCharacters(self, s: str, k: int) -> int:
         n=len(s)
+
        #first we count all the elements in string as per a,b,c.
         c_a=c_b=c_c=0
         for char in s:
@@ -10,30 +11,38 @@ class Solution:
                 c_b+=1
             elif char=="c":
                 c_c+=1
+
+    #after counting all the elements we have to check for conditions.
         if (c_a<k or c_b<k or c_c<k):
-            return -1  #not possible to del k characters
+            return -1  #not possible to del k characters so return -1
+
+    #initiate with the sliding window approach
         delete=0
-        i=0
-        j=0
-        while j<n:
-            if s[j]=="a":
+        l=0 #left 
+        r=0  #right
+        while r<n:
+            #we use window such that count of element is decreased by 1
+            if s[r]=="a":
                 c_a-=1
-            elif s[j]=="b":
+            elif s[r]=="b":
                 c_b-=1
             else:
                 c_c-=1
 
             #if deletion count of any char becomes less than k then just shrink the window
 
-            while (i<=j) and (c_a<k or c_b<k or c_c<k):
+            while (l<=r) and (c_a<k or c_b<k or c_c<k):
                 #left pointer move to left
-                if s[i]=="a":
+                if s[l]=="a":
                     c_a+=1
-                elif s[i]=="b":
+                elif s[l]=="b":
                     c_b+=1
                 else:
                     c_c+=1
-                i+=1
-            delete=max(delete,j-i+1)
-            j+=1
-        return n-delete
+                l+=1 #move left pointer forward
+            delete=max(delete,r-l+1)
+            r+=1 #also move right pointer forward
+
+        #since we dont need count of delete so just subtract from 
+        #the n then we will get our minimum number of minutes
+        return n-delete 

@@ -14,6 +14,6 @@ class Solution:
                 h2[i]+=1
             else:
                 h2[i]=1
-        if set(h1.values())==set(h2.values()) and set(h1.keys())==set(h2.keys()):
+        if sorted(h1.values())==sorted(h2.values()) and set(h1.keys())==set(h2.keys()):
             return True
         return False

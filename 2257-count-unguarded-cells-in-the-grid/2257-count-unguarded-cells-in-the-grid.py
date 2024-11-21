@@ -28,4 +28,4 @@ class Solution:
         u=0
         for r in null_matrix:
             u+=r.count(0)
-        return 0
+        return u

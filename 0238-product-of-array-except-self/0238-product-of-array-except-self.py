@@ -1,9 +1,9 @@
 class Solution:
     def productExceptSelf(self, nums: List[int]) -> List[int]:
         n=len(nums)
-        p=1 #store the product of left
-        s=1 #store the product of right
-        r=[0]*n #null list
+        p=1 #left product accumulator
+        s=1 #right product accumulator
+        r=[1]*n #result list
         for i in range(n):
             r[i]=p  #set the current index to the product of left
             p*=nums[i] #update p

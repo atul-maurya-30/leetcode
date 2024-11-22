@@ -5,7 +5,7 @@ class Solution:
             if i!="*":
                 f.append(i)
             else:
-                    f.pop()
+                f.pop()
         return "".join(f)
 
                 

@@ -6,18 +6,22 @@ class Solution:
 
         #iterate through each row 
         for i in matrix:
-            row="" #string to store th pattern of matrix
+            # row="" #string to store th pattern of matrix
 
-            #for each element in the row ,check if it is same as first element
-            for j in range(len(i)):
-                #"t" for same ,"f" for flipped
-                row+="t" if i[0]==i[j] else "f"
+            # #for each element in the row ,check if it is same as first element
+            # for j in range(len(i)):
+            #     #"t" for same ,"f" for flipped
+            #     row+="t" if i[0]==i[j] else "f"
+
+            row=tuple(i)
+            flip=tuple(1-b for b in i)
+            n=min(row,flip)
 
 #update the count in map
-            if row in h:
-                h[row]+=1
+            if n in h:
+                h[n]+=1
             else:
-                h[row]=1
+                h[n]=1
                        
     #return the max values of count in map
         return max(h.values())

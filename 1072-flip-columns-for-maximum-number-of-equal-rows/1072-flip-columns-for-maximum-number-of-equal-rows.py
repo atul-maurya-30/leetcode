@@ -1,22 +1,16 @@
 class Solution:
     def maxEqualRowsAfterFlips(self, matrix: List[List[int]]) -> int:
-        #this is a very easy and optimized approach by use of hashmap
-        # as we can count the pattern and save it into map
-        h=defaultdict(int)
-
-        #iterate through each row 
-        for i in matrix:
-            row="" #string to store th pattern of matrix
-
-            #for each element in the row ,check if it is same as first element
-            for j in range(len(i)):
-                #"t" for same ,"f" for flipped
-                row+="t" if i[0]==i[j] else "f"
-
-#update the count in map
-            h[row]+=1
-                       
-    #return the max values of count in map
-        return max(h.values())
-
- 
+        #its like a brute force approach with a tricky logic i.e.
+        #we just have to find the rows that is equal to current rows
+        # or inverted flips of that rows.
+        
+        m=0 #max=0
+        for i in range(len(matrix)): #outer loop (base rows)
+            r=0 #reset the value of r everytime
+            for j in range(len(matrix)): #inner loop (comaring rows with each other)
+            #condition 1: rows are already identical
+            #condition 2: rows can be made identical by flipping all columns
+                if matrix[i]==matrix[j] or matrix[i]==[1-bit for bit in matrix[j]]:
+                    r+=1 #increment the value of counter
+            m=max(m,r) #max value of r
+        return m

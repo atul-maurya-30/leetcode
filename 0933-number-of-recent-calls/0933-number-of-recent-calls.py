@@ -1,8 +1,9 @@
+import collections
 class RecentCounter:
 
     def __init__(self):
         #initialize a deque to store timestamps of recent requests
-        self.dq=deque()
+        self.dq=collections.deque()
 
     def ping(self, t: int) -> int:
         #add the current request timestamp to the deque

@@ -1,18 +1,9 @@
-class Solution(object):
-    def generate(self, numRows):
-        """
-        :type numRows: int
-        :rtype: List[List[int]]
-        """
-        if numRows==0:
-            return []
-        if numRows==1:
-            return [[1]]
-        
-        prev=self.generate(numRows-1)
-        new=[1]*numRows
-
-        for i in range(1,numRows-1):
-            new[i]=prev[-1][i-1]+prev[-1][i]  # in this -1 indicates the last row and other are showing the columns
-        prev.append(new)
-        return prev
+class Solution:
+    def generate(self, numRows: int) -> List[List[int]]:
+        t=[] #use to store pascal traingle
+        for r in range(numRows): #iteration through rows
+            curr_r=[1]*(r+1) #initializing 1's at first and last col in row
+            for c in range(1,r): #iteration through columns
+                curr_r[c]=t[r-1][c-1]+t[r-1][c] #above sum equal to below sum
+            t.append(curr_r) #now to save the current new row in pascal triangle
+        return t 

@@ -1,8 +1,8 @@
 class Solution:
     def dfs(self,g,u,visited):
-        visited[u]=None
+        visited[u]=None #mark as visiting
         for v in g[u]:
-            if visited[v] is None:
+            if visited[v] is None: #cycle found
                 return True
             if visited[v] is False:
                 if self.dfs(g,v,visited): #here v becomes curr and u becomes parent node
@@ -10,11 +10,11 @@ class Solution:
         visited[u]=True
         return False
     def canFinish(self, numCourses: int, prerequisites: List[List[int]]) -> bool:
-        g=[[] for _ in range(numCourses)]
-        for u,v in prerequisites:
+        g=[[] for _ in range(numCourses)] #initialize adjacency list
+        for u,v in prerequisites: #build graph from prerequisites
             g[u].append(v)
-        visited=[False]*numCourses
+        visited=[False]*numCourses #initialized all nodes as unvisited
         for i in range(numCourses):
-            if not visited[i] and self.dfs(g,i,visited):
+            if self.dfs(g,i,visited):  #cycle found
                 return False
         return True

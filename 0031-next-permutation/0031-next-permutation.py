@@ -3,22 +3,18 @@ class Solution:
         """
         Do not return anything, modify nums in-place instead.
         """
-        l=len(nums)
-        #for 2 no.
-        if l<=2:
-            return nums.reverse()
-        #for more than 2 no. and check for pointer "p"
-        p=l-2
-        while p>=0 and nums[p]>=nums[p+1]:
-            p-=1
-        #if the element is last
-        if p==-1:
-            return nums.reverse()
-        #as per use of pointer swap the elements 
-        for i in range(l-1,p,-1):
-            if nums[p]<nums[i]:
-                nums[p],nums[i]=nums[i],nums[p]
+        n=len(nums)
+        l=-1
+        #step:1 find the first decreasing element(left)
+        for i in range(n-2,-1,-1): #traverse from right to left
+            if nums[i]<nums[i+1]:
+                l=i
                 break
-        nums[p+1:]=reversed(nums[p+1:])
-        return nums
-                
+        if l!=-1: #if a pivot exists
+        #step:2 find the element just larger than nums[left]
+            for j in range(n-1,l,-1):
+                if nums[j]>nums[l]:
+                    #step:3 swap nums[left] and nums[right]
+                    nums[l],nums[j]=nums[j],nums[l]
+                    break
+        nums[l+1:]=reversed(nums[l+1:]) #reverse subarray from left to +1 to the end

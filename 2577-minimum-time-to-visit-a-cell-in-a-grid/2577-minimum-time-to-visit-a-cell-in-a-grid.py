@@ -29,14 +29,9 @@ class Solution:
                 if not(0<=row<m and 0<=col<n and not visited[row][col]):
                     continue
                 #calculate time needed to move cell(row,col)
-                if t<grid[row][col]:#wait if the cell isnt yet accessible
-                    w=grid[row][col]-t #timw neede to wait
-                    next_t=grid[row][col]+(w%2)#adjust next time based on even/odd wait
-                else:
-                    next_t=t+1 #the cell is already accessible, we can move there in 1 step
-                if next_t<res[row][col]:
-                    res[row][col]=next_t
-                    heapq.heappush(pq,(next_t,row,col))#push cell to heap with updated time
+                w=(grid[row][col]-t)%2==0
+                next_t=max(grid[row][col]+w,t+1)
+                heapq.heappush(pq,(next_t,row,col))#push cell to heap with updated time
         return -1 #return -1 if reaching the bottom-right corner is not possible
 
 

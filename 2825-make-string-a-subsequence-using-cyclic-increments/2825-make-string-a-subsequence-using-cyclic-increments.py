@@ -12,6 +12,6 @@ class Solution:
             if str1[i]==str2[j] or d[str1[i]]==str2[j]:
                 j+=1 #move to next character in str2
             i+=1 #move to next character in str1
-        return j==len(str2) #if after while loop length of j is equal to lenght of str2 then return True else False
+        return j==len(str2) #if after while loop, length of j is equal to lenght of str2 then return True else False
 
         

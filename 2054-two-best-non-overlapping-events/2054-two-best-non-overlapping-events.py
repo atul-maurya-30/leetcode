@@ -15,24 +15,24 @@ class Solution:
         return ans #return next valid event's index
 
     #step-5 dp to calculate max value of up to 2 non-overlapping events
-    def find(self,events,i,count,n,memo):
-        if count==2 or i>=n: #stop if 2 events selected or no events left 
+    def find(self,events,i,count,n,dp): 
+        if count==2 or i>=n: #base case, stop if 2 events selected or no events left 
             return 0
 
-        if memo[i][count]!=-1: #return result if already computed
-            return memo[i][count]
+        if dp[i][count]!=-1: #return result if already computed
+            return dp[i][count]
 
         #step:6 find the index of the next valid event that starts after the current event ends
         nex=self.binary_for_finding_next_element(events,events[i][1]) #use binary search
 
         #step:7 option 1- take the current event and solve for the next valid event
-        take=events[i][2]+self.find(events,nex,count+1,n,memo)
+        take=events[i][2]+self.find(events,nex,count+1,n,dp)
 
         #step:8 option 2- Take the current event and solve for the next valid event 
-        not_take=self.find(events,i+1,count,n,memo)
+        not_take=self.find(events,i+1,count,n,dp)
 
-        memo[i][count]=max(take,not_take)
-        return memo[i][count] #return computed maximum value
+        dp[i][count]=max(take,not_take)
+        return dp[i][count] #return computed maximum value
 
 #step:1 main function to solve problem
     def maxTwoEvents(self, events: List[List[int]]) -> int:

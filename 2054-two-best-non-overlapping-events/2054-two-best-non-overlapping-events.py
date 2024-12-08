@@ -28,7 +28,7 @@ class Solution:
         #step:7 option 1- take the current event and solve for the next valid event
         take=events[i][2]+self.find(events,nex,count+1,n,dp)
 
-        #step:8 option 2- Take the current event and solve for the next valid event 
+        #step:8 option 2- skip the current event and move to next valid event 
         not_take=self.find(events,i+1,count,n,dp)
 
         dp[i][count]=max(take,not_take)

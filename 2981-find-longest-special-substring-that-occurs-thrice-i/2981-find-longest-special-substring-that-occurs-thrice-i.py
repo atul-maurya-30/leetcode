@@ -10,10 +10,10 @@ class Solution:
                     sub[curr]=sub.get(curr,0)+1 #count the substring
                 else:
                     break #stop if characters differ
-    
+
         res=0 #variable to track the maximum length of a valid substring
         #check the frequency of each substring and find the longest one that appears at least 3 times
         for ss,c in sub.items():
-            if c>=3 and len(ss)>res: 
+            if c>=3 and len(ss)>res:
                 res=len(ss)
         return -1 if res==0 else res

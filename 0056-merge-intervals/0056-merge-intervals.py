@@ -1,8 +1,9 @@
 class Solution:
     def merge(self, intervals: List[List[int]]) -> List[List[int]]:
         s=[]
-        if len(intervals)==1:
-            return intervals
+        intervals.sort() #sort the interval in order
+        # if len(intervals)==1: #check for base case
+        #     return intervals
         for i in range(1,len(intervals)):
             a=intervals[i-1][1]
             b=intervals[i][0]

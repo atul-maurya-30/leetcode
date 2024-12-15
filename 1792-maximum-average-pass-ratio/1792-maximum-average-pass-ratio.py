@@ -9,7 +9,7 @@ class Solution:
         
         #intialize heap with delta for each classes
         for p,t in classes:
-
+            p,t=p*1.0,t*1.0
             heap.append((-cal(p,t),p,t)) #max heap by negative index
         heapq.heapify(heap)
 

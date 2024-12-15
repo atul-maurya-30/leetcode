@@ -4,28 +4,31 @@ class Solution:
         heap=[]
 
         #calculate delta function to reduce the redundancy of code
-        def cal(c):
-            p,t=c
-            delta=((p+1)/(t+1))-(p/t) #find delta value
-            return delta
+        def cal(p,t):
+            return ((p+1)/(t+1))-(p/t) #find delta value
         
         #intialize heap with delta for each classes
-        for i in range(r):
-            heapq.heappush(heap,(-cal(classes[i]),i)) #max heap by negative index
+        for p,t in classes:
+
+            heap.append((-cal(p,t),p,t)) #max heap by negative index
+        heapq.heapify(heap)
 
         #distribute extra students to every classes
-        while extraStudents>0:
-            _,ind=heapq.heappop(heap) #get classes with maximum delta
-            classes[ind][0]+=1 #add a student
-            classes[ind][1]+=1 #update total class
+        # while extraStudents>0:
+        #     _,ind=heapq.heappop(heap) #get classes with maximum delta
+        #     classes[ind][0]+=1 #add a student
+        #     classes[ind][1]+=1 #update total class
 
-            #recalculate the delta
-            c=(classes[ind][0],classes[ind][1])
-            heapq.heappush(heap,(-cal(c),ind))
-            extraStudents-=1
+        #     #recalculate the delta
+        #     c=(classes[ind][0],classes[ind][1])
+        #     heapq.heappush(heap,(-cal(c),ind))
+        #     extraStudents-=1
+        for _ in range(extraStudents):
+            d,p,t=heapq.heappop(heap)
+            heapq.heappush(heap,(-cal(p+1,t+1),p+1,t+1))
 
         #calculate the final average ratio
-        return sum(p/t for p,t in classes)/r
+        return sum(p/t for d,p,t in heap)/r
         
             
 

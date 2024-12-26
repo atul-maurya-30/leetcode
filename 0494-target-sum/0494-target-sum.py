@@ -21,7 +21,8 @@ class Solution:
             return h[k]
         plus=self.solve(nums,i+1,s+nums[i],target,h)
         minus=self.solve(nums,i+1,s-nums[i],target,h)
-        return plus+minus
+        h[k]=plus+minus
+        return h[k]
     def findTargetSumWays(self, nums: List[int], target: int) -> int:
         h={}
         return self.solve(nums,0,0,target,h)

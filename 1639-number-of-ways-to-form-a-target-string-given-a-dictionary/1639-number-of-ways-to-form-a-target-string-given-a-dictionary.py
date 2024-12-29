@@ -34,6 +34,6 @@ class Solution:
         for i in range(k):
             for w in words:
                 char=w[i]
-                freq[ord(char)-ord("a")][i]+=1 #counter for increasing count value
+                freq[ord(char)-ord("a")][i]+=1 #counter for increasing count value of the particular alphabet
 
         return self.solve(0,0,freq,target,m,k,memo) #call for function and return answer

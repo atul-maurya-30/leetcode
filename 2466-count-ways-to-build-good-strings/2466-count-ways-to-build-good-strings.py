@@ -9,7 +9,7 @@ class Solution:
     def solve(self,a,memo):
             if a>self.h:
                 return 0
-            if memo[a]!+-1:
+            if memo[a]!=-1:
                 return memo[a]
 
             b=0

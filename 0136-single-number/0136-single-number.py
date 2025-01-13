@@ -1,10 +1,6 @@
-class Solution(object):
-    def singleNumber(self, nums):
-        """
-        :type nums: List[int]
-        :rtype: int
-        """
-        r=0
-        for num in nums:
-            r=r^num
-        return r
+class Solution:
+    def singleNumber(self, nums: List[int]) -> int:
+        n=Counter(nums)
+        for i,k in n.items():
+            if k==1:
+                return i

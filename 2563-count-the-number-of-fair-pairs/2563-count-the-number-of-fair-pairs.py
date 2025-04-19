@@ -17,5 +17,7 @@ class Solution:
                     l+=1 #after that we have to increment left pointer
                 else: r-=1 #else we have to decrement rightb pointer
             return c #it will give the total counts of uppper and lower 
+        
+        #initialize the function counting 
         return counting(upper)-counting(lower-1) # as lower is also included in the condition so we use lower-1
         #and return the result

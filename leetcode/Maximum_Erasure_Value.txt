@@ -1,0 +1,7 @@
+                seen[nums[l]]-=1
+                total-=nums[l]
+            while seen[nums[r]]>1:
+
+            seen[nums[r]]=seen.get(nums[r],0)+1
+            total+=nums[r]
+        for r in range(len(nums)):

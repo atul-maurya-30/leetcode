@@ -1,0 +1,14 @@
+        
+        rem,res1=self.removep(s,p1,sc1)
+        _,res2=self.removep(rem,p2,sc2)
+        return res1+res2        
+    def removep(self,s,pair,val):
+        st=[]
+        score=0
+        for i in s:
+            if st and st[-1]==pair[0] and i==pair[1]:
+                st.pop()
+                score+=val
+            else:
+                st.append(i)
+        return "".join(st),score
